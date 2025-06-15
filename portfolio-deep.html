@@ -3,355 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="path-to-your-favicon.ico">
+    <meta name="description" content="Portfolio of Ravuri Naga Pavan Kumar - Software Developer">
+    <meta name="keywords" content="Ravuri Naga Pavan Kumar, Portfolio, Web Developer, Software Engineer, Projects, Certifications">
+    <meta name="author" content="Ravuri Naga Pavan Kumar">
+    <meta property="og:title" content="Ravuri Naga Pavan Kumar | Portfolio">
+    <meta property="og:description" content="Personal portfolio website of Ravuri Naga Pavan Kumar, Software Developer.">
+    <meta property="og:image" content="passphoto_my2.jpg">
+    <meta property="og:type" content="website">
+    <title>Ravuri Naga Pavan Kumar | Portfolio</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        :root {
+            --bg-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            --text-color: #fff;
+            --card-bg: rgba(255,255,255,0.05);
+            --button-bg: #58a6ff;
+            --button-hover: #4a90e2;
+            --header-bg: rgba(0,0,0,0.9);
+            --footer-bg: #111;
+            --transition-speed: 0.5s;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            text-align: center;
-            min-height: 100vh;
-            transition: background 0.5s, color 0.5s;
+        .light-theme {
+            --bg-color: #f5f5f5;
+            --text-color: #111;
+            --card-bg: rgba(0,0,0,0.05);
+            --button-bg: #007bff;
+            --button-hover: #0056b3;
+            --header-bg: #fff;
+            --footer-bg: #ddd;
         }
 
-        body.light-mode {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            color: #333;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: background 0.5s;
-        }
-
-        body.light-mode .navbar {
-            background: rgba(255, 255, 255, 0.85);
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        body.light-mode .navbar a {
-            color: #333;
-        }
-
-        .navbar a:hover {
-            color: #107cf8;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        .profile-picture {
-            margin-top: 120px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #58a6ff;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .profile-picture:hover {
-            box-shadow: 0 0 15px #58a6ff;
-            transform: scale(1.1);
-        }
-
-        section {
-            padding: 100px 20px;
-        }
-
-        h1 {
-            font-size: 3rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #58a6ff;
-        }
-
-        p {
-            color: #ddd;
-            font-size: 1.2rem;
-        }
-
-        body.light-mode p {
-            color: #555;
-        }
-
-        .project-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: left;
-            box-shadow: 0 4px 8px rgba(88, 166, 255, 0.2);
-        }
-
-        body.light-mode .project-card {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: #333;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 16px rgba(88, 166, 255, 0.4);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #58a6ff;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-
-        .back-to-top:hover {
-            background: #4a90e2;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .skills-list span {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
-        }
-
-        body.light-mode .skills-list span {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        form input, form textarea {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #58a6ff;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body.light-mode form input, body.light-mode form textarea {
-            background: rgba(0, 0, 0, 0.1);
-            color: #333;
-        }
-
-        form button {
-            background: #58a6ff;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        form button:hover {
-            background: #4a90e2;
-        }
-
-        footer {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            transition: background 0.5s, color 0.5s;
-        }
-
-        body.light-mode footer {
-            background: rgba(255, 255, 255, 0.85);
-            color: #333;
-        }
-
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0f2027;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 1s, visibility 1s;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg-color); color: var(--text-color); transition: background var(--transition-speed), color var(--transition-speed); }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
+        header { position: fixed; top: 0; width: 100%; background: var(--header-bg); padding: 15px 30px; z-index: 999; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: background var(--transition-speed); }
+        header nav a { color: var(--text-color); text-decoration: none; margin: 0 15px; transition: 0.3s; font-weight: 500; }
+        header nav a:hover { color: var(--button-bg); }
+        .hero { padding: 150px 20px 100px; text-align: center; background: var(--bg-color); transition: background var(--transition-speed); }
+        .hero img { width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--button-bg); box-shadow: 0 0 20px rgba(88,166,255,0.7); }
+        h1 { font-size: 2.8rem; margin: 20px 0; }
+        h2 { font-size: 2.4rem; color: var(--button-bg); margin-bottom: 20px; text-align: center; }
+        section { padding: 100px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; justify-content: center; }
+        .card { background: var(--card-bg); padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(88,166,255,0.6); }
+        form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: auto; background: var(--card-bg); padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        input, textarea { padding: 15px; border: none; border-radius: 10px; }
+        button { background: var(--button-bg); padding: 15px; border: none; border-radius: 10px; color: #fff; font-weight: 600; cursor: pointer; }
+        button:hover { background: var(--button-hover); }
+        footer { background: var(--footer-bg); text-align: center; padding: 30px; color: #aaa; font-size: 0.9rem; transition: background var(--transition-speed); }
+        .social-icons a { color: var(--text-color); margin: 0 10px; font-size: 1.5rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--button-bg); }
+        .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--button-bg); color: #fff; padding: 15px; border-radius: 50%; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        #themeToggle { cursor: pointer; font-size: 1.2rem; background: none; border: none; color: var(--text-color); }
+        @media (max-width: 768px) { header nav { display: flex; flex-direction: column; } }
     </style>
 </head>
 <body>
-    <div class="loader">
-        <div class="spinner">Loading...</div>
-    </div>
+<header>
+    <div><strong>Pavan's Portfolio</strong></div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" title="Toggle Theme">🌙</button>
+    </nav>
+</header>
 
-    <div class="navbar">
-        <div><strong>My Portfolio</strong></div>
-        <div>
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        </div>
-    </div>
+<div class="hero">
+    <img src="passphoto_my2.jpg" alt="Profile Picture">
+    <h1>Ravuri Naga Pavan Kumar</h1>
+    <p>Software Developer | Problem Solver | Lifelong Learner</p>
+</div>
 
-    <section id="hero">
-        <img src="passphoto_my2.jpg" alt="Ravuri Naga Pavan Kumar - Profile Picture" class="profile-picture">
-        <h1>Hi, I'm <span class="highlight">Ravuri Naga Pavan Kumar</span></h1>
-        <p>A passionate developer building cool projects.</p>
-    </section>
-
-    <section id="about">
+<section id="about">
+    <div class="container">
         <h2>About Me</h2>
-        <p>I'm a software developer with a strong passion for coding and problem-solving. I specialize in building web applications and love learning new technologies. My goal is to create impactful solutions that make a difference.</p>
-    </section>
+        <p>I am a passionate software developer with expertise in full-stack web development, backend systems, and data-driven solutions. I enjoy solving complex problems and building scalable, user-centric products that create impact.</p>
+    </div>
+</section>
 
-    <section id="skills">
+<section id="skills">
+    <div class="container">
         <h2>Skills</h2>
-        <div class="skills-list">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>React</span>
-            <span>Node.js</span>
+        <div class="grid">
+            <div class="card">HTML5 & CSS3</div>
+            <div class="card">JavaScript (ES6+)</div>
+            <div class="card">React.js</div>
+            <div class="card">Node.js & Express</div>
+            <div class="card">Python & Flask</div>
+            <div class="card">MySQL & MongoDB</div>
+            <div class="card">Git & GitHub</div>
+            <div class="card">RESTful APIs</div>
+            <div class="card">Data Visualization</div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="projects">
+<section id="projects">
+    <div class="container">
         <h2>Projects</h2>
-        <div class="project-list">
-            <div class="project-card">
-                <h3>Project 1</h3>
-                <p>A brief description of this incredible project.</p>
-                <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
-                <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
+        <div class="grid">
+            <div class="card">
+                <h3>Portfolio Website</h3>
+                <p>Fully responsive personal portfolio built with HTML, CSS, JavaScript.</p>
+                <a href="https://github.com/yourusername/portfolio" target="_blank">View Code</a>
             </div>
-            <div class="project-card">
-                <h3>Project 2</h3>
-                <p>A brief description of this incredible project.</p>
-                <p><strong>Tech Stack:</strong> React, Node.js</p>
-                <a href="https://github.com/yourusername/project2" target="_blank">View on GitHub</a>
+            <div class="card">
+                <h3>Blog Platform</h3>
+                <p>Full-stack blog app with user authentication and content management.</p>
+                <a href="https://github.com/yourusername/blog-app" target="_blank">View Code</a>
             </div>
-            <div class="project-card">
-                <h3>Project 3</h3>
-                <p>A brief description of this incredible project.</p>
-                <p><strong>Tech Stack:</strong> Python, Flask</p>
-                <a href="https://github.com/yourusername/project3" target="_blank">View on GitHub</a>
+            <div class="card">
+                <h3>Task Manager API</h3>
+                <p>RESTful API using Node.js, Express and MongoDB with full CRUD support.</p>
+                <a href="https://github.com/yourusername/task-api" target="_blank">View Code</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contact">
+<section id="experience">
+    <div class="container">
+        <h2>Experience</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Web Developer Intern</h3>
+                <p><strong>Apex Planet</strong> | PHP, MySQL, Web Development</p>
+                <p>Duration: 3 months</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <div class="container">
+        <h2>Certifications</h2>
+        <div class="grid">
+            <div class="card">InfyTQ Springboard</div>
+            <div class="card">TATA Data Visualization</div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
         <h2>Contact</h2>
-        <form id="contact-form" action="https://formspree.io/f/mdkarjpd" method="POST">
+        <form action="https://formspree.io/f/mdkarjpd" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
+            <button type="submit">Send Message</button>
         </form>
-        <p>📧 Email: <a href="mailto:ravuripavan88@gmail.com">ravuripavan88@gmail.com</a></p>
-        <p>📞 Phone: 7032698288</p>
-    </section>
+        <div class="social-icons">
+            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>Email: <a href="mailto:ravuripavan88@gmail.com">ravuripavan88@gmail.com</a> | Phone: 7032698288</p>
+    </div>
+</section>
 
-    <footer>
-        <p>© 2023 Ravuri Naga Pavan Kumar. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>© 2025 Ravuri Naga Pavan Kumar. All rights reserved.</p>
+</footer>
 
-    <div class="back-to-top" onclick="scrollToTop()" aria-label="Scroll to top">⬆ Top</div>
+<div class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"><i class="fas fa-chevron-up"></i></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script>
-        // Loader Animation
-        window.addEventListener("load", () => {
-            const loader = document.querySelector(".loader");
-            loader.classList.add("hidden");
-        });
+<script>
+    window.addEventListener('scroll', () => {
+        document.querySelector('.back-to-top').style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
 
-        // Back to Top Button
-        window.addEventListener("scroll", () => {
-            const backToTop = document.querySelector(".back-to-top");
-            backToTop.style.display = window.scrollY > 300 ? "block" : "none";
-        });
+    const toggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+        document.body.classList.add('light-theme');
+        toggle.textContent = '☀️';
+    }
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-
-        // GSAP Animations
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.from(".navbar", { opacity: 0, y: -50, duration: 1 });
-            gsap.from(".profile-picture", { opacity: 0, scale: 0, duration: 1 });
-            gsap.from("h1", { opacity: 0, y: -20, duration: 1 });
-            gsap.from("p", { opacity: 0, y: 20, duration: 1, delay: 0.3 });
-            gsap.from(".project-card", { opacity: 0, x: -50, duration: 0.5, stagger: 0.2, delay: 0.5 });
-        });
-
-        // Dark/Light Mode Toggle
-        const themeToggle = document.getElementById("theme-toggle");
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("light-mode");
-            themeToggle.textContent = document.body.classList.contains("light-mode") ? "🌞" : "🌙";
-        });
-    </script>
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
+        toggle.textContent = theme === 'light' ? '☀️' : '🌙';
+    });
+</script>
 </body>
 </html>
